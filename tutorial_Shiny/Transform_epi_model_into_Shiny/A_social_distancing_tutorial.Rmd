@@ -1,6 +1,8 @@
 ---
 title: "Flatten the Cruve by social distancing - a tutorial followed"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 Inspired by https://flowingdata.com/2020/03/18/how-to-flatten-the-curve-a-social-distancing-simulation/   
 __Will make an R Shiny app with a more complicated model__        
@@ -86,12 +88,12 @@ inf.probs <- seq(.1, 0, by=-.01)
 ```
 ```{r}
 # Start with a blank plot   
-plot(NA, type="n", xlim=c(0,10000), ylim=c(0, 1000),
+plot(NA, type="n", xlim=c(0,1000), ylim=c(0, 1000),
      bty="n", axes=FALSE,
      xlab="Time Since First Case", ylab="Number Infected", 
      main="Flatten the Curve")
 #Draw axis   
-axis(1, seq(0,10000,1000), lwd=0, lwd.ticks = .5, pos = -5)
+axis(1, seq(0,1000,100), lwd=0, lwd.ticks = .5, pos = -5)
 axis(2, at=seq(0, 1000, 200), lwd=0, lwd.ticks=.5, pos=-2)
 # Run simulation on each act.rate   
 for (inf.p in inf.probs) {
